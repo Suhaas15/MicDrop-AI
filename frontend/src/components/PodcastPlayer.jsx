@@ -49,8 +49,8 @@ const PodcastPlayer = ({ isGenerating, isPlaying }) => {
             className="w-full flex flex-col items-center gap-xl p-xl"
         >
             {/* Waveform Animation - Full Width */}
-            <div className="w-full flex items-end h-[150px] justify-center gap-[4px]">
-                {[...Array(300)].map((_, i) => {
+            <div className="w-full flex items-end h-[200px] justify-center gap-[4px]">
+                {[...Array(250)].map((_, i) => {
                     const min = 20;
                     const max = 120;
                     const randomHeight1 = Math.random() * (max - min) + min;
