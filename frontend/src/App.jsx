@@ -52,7 +52,7 @@ function App() {
         <div ref={playerRef} className="w-full flex justify-center">
           <PodcastPlayer isGenerating={isGenerating} isPlaying={isPlaying} />
         </div>
-        <About />
+        <About isGenerating={isGenerating} isPlaying={isPlaying} />
       </main>
     </div>
   );

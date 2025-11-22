@@ -71,14 +71,14 @@ const PromptInput = ({ onGenerate, isGenerating, isPlaying }) => {
           className="w-full max-w-[800px] mb-xl"
           onSubmit={handleSubmit}
         >
-          <div className="relative w-full bg-white border border-gray-200 rounded-3xl p-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div className="relative w-full bg-white border border-gray-200 rounded-3xl p-lg shadow-lg hover:shadow-xl dark:shadow-2xl transition-shadow duration-300">
             {/* Two Column Layout */}
             <div className="flex gap-0">
               {/* Sponsors Column */}
               <div className="flex-1 flex flex-col">
                 <h3 className="text-sm font-semibold text-gray-700 mb-sm">Sponsors</h3>
                 <textarea
-                  className="w-full h-[120px] p-sm bg-transparent border-none text-text font-sans text-base focus:outline-none resize-none"
+                  className="w-full h-[120px] p-sm bg-transparent border-none text-gray-900 font-sans text-base focus:outline-none resize-none placeholder:text-gray-500"
                   placeholder="Describe sponsor topics..."
                   value={sponsorsPrompt}
                   onChange={(e) => setSponsorsPrompt(e.target.value)}
@@ -92,7 +92,7 @@ const PromptInput = ({ onGenerate, isGenerating, isPlaying }) => {
               <div className="flex-1 flex flex-col">
                 <h3 className="text-sm font-semibold text-gray-700 mb-sm">My Topics</h3>
                 <textarea
-                  className="w-full h-[120px] p-sm bg-transparent border-none text-text font-sans text-base focus:outline-none resize-none"
+                  className="w-full h-[120px] p-sm bg-transparent border-none text-gray-900 font-sans text-base focus:outline-none resize-none placeholder:text-gray-500"
                   placeholder="Describe your topics..."
                   value={myTopicsPrompt}
                   onChange={(e) => setMyTopicsPrompt(e.target.value)}

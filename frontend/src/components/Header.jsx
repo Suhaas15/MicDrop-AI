@@ -12,7 +12,7 @@ const Header = ({ theme, toggleTheme, onHomeClick }) => {
     return (
         <header className="w-full flex justify-between items-center px-lg py-md bg-transparent absolute top-0 z-50">
             <div className="flex items-center gap-sm font-display text-2xl font-bold text-text">
-                <FaMicrophone className="text-2xl text-primary" />
+                <FaMicrophone className="text-2xl text-black" />
             </div>
             <nav className="flex items-center">
                 <button

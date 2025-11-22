@@ -1,7 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const About = () => {
+const About = ({ isGenerating, isPlaying }) => {
+    // Don't render if generating or playing
+    if (isGenerating || isPlaying) return null;
+
     return (
         <section id="about" className="w-full min-h-screen flex flex-col items-center justify-center py-xl px-lg bg-background">
             <motion.div
@@ -21,7 +24,7 @@ const About = () => {
                     className="space-y-md"
                 >
                     <p className="text-text-muted text-lg leading-relaxed mt-lg">
-                        EchoDuo is an autonomous, multi-agent AI podcast system that doesn’t just generate content — it thinks, acts, evolves, and publishes on its own.
+                        EchoDuo is an autonomous, multi-agent AI podcast system that doesn't just generate content — it thinks, acts, evolves, and publishes on its own.
 
                         Unlike traditional AI tools that require constant human prompts and editing, EchoDuo operates as a coordinated network of intelligent agents:
 

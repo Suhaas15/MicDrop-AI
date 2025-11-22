@@ -6,35 +6,46 @@ const PodcastPlayer = ({ isGenerating, isPlaying }) => {
     // Dummy transcript data
     const transcript = "Welcome to this podcast about the fascinating world of AI and machine learning. Today we'll explore how neural networks are revolutionizing the way we interact with technology.";
 
+    // Check if dark mode is active
+    const isDarkMode = document.documentElement.classList.contains('dark');
+
     if (!isGenerating && !isPlaying) {
         return null; // Don't show anything initially
     }
 
     if (isGenerating) {
-        // Loading state
+        // Loading state with waveform
         return (
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="w-full max-w-[800px] flex flex-col items-center justify-center min-h-[300px] gap-md"
+                className="w-full flex flex-col items-center justify-center min-h-[400px] gap-xl"
             >
-                <div className="flex gap-[6px] items-end h-[60px]">
-                    {[...Array(12)].map((_, i) => (
-                        <motion.span
-                            key={i}
-                            className="block w-[8px] bg-primary rounded-[4px]"
-                            animate={{
-                                height: [20, 60, 20],
-                            }}
-                            transition={{
-                                duration: 1,
-                                repeat: Infinity,
-                                delay: i * 0.1,
-                                ease: "easeInOut",
-                            }}
-                        />
-                    ))}
+                {/* Waveform Animation - Fewer bars, taller */}
+                <div className="w-full flex items-end h-[300px] justify-center gap-[6px]">
+                    {[...Array(100)].map((_, i) => {
+                        const min = 40;
+                        const max = 200;
+                        const randomHeight1 = Math.random() * (max - min) + min;
+                        const randomHeight2 = Math.random() * (max - min) + min;
+
+                        return (
+                            <motion.span
+                                key={i}
+                                className={`${isDarkMode ? 'bg-white' : 'bg-gray-900'} rounded-[6px] flex-1 max-w-[20px]`}
+                                animate={{
+                                    height: [randomHeight1, randomHeight2, randomHeight1],
+                                }}
+                                transition={{
+                                    duration: Math.random() * 1.2 + 1.5,
+                                    repeat: Infinity,
+                                    delay: i * 0.02,
+                                    ease: "easeInOut",
+                                }}
+                            />
+                        );
+                    })}
                 </div>
                 <p className="text-text-muted text-lg">Generating your podcast...</p>
             </motion.div>
@@ -60,7 +71,7 @@ const PodcastPlayer = ({ isGenerating, isPlaying }) => {
                     return (
                         <motion.span
                             key={i}
-                            className="bg-black rounded-[6px] flex-1 max-w-[20px]"
+                            className={`${isDarkMode ? 'bg-white' : 'bg-gray-900'} rounded-[6px] flex-1 max-w-[20px]`}
                             animate={{
                                 height: [randomHeight1, randomHeight2, randomHeight1],
                             }}
@@ -95,7 +106,7 @@ const PodcastPlayer = ({ isGenerating, isPlaying }) => {
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="flex gap-md items-center"
             >
-                <button className="w-[60px] h-[60px] rounded-full bg-primary text-white border-none text-2xl flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+                <button className="w-[60px] h-[60px] rounded-full bg-black text-white border-none text-2xl flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
                     <FaPlay />
                 </button>
             </motion.div>
